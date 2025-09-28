@@ -89,6 +89,17 @@ public class MainFrame extends JFrame{
 	doubleTriple.add(doub);
 	doubleTriple.add(trip);
 	
+	doubleTriple.setBackground(new Color(123, 142, 100));
+	doub.setBackground(new Color(66, 135, 245));
+	doub.setPreferredSize(new Dimension(60, 40));
+	doub.setMaximumSize(new Dimension(60, 40));
+	doub.setMinimumSize(new Dimension(60, 40));
+	
+	trip.setBackground(new Color(66, 135, 245));
+	trip.setPreferredSize(new Dimension(60, 40));
+	trip.setMaximumSize(new Dimension(60, 40));
+	trip.setMinimumSize(new Dimension(60, 40));
+	
 	
 	//JPanel für die aktuell geworfenen Punkte anlegen:
 	JPanel aktuellePunkte = new JPanel();
@@ -101,6 +112,9 @@ public class MainFrame extends JFrame{
 	JButton zugEnde = new JButton("Zug beenden");
 	aktuellePunkte.add(zugEnde);
 	
+	JButton unDo = new JButton("Rückgängig");
+	aktuellePunkte.add(unDo);
+	
 
 	
 	for(int y=0; y<btn.length; y++) {
@@ -112,13 +126,23 @@ public class MainFrame extends JFrame{
 		});
 	}
 	
+	//Double Button Funktion:
 	doub.addActionListener(e -> {
 		tempPunkte += lastValue;
+		lastValue = lastValue*2;
 		aktPunkte.setText("geworfene Punkte: " + tempPunkte);
 	});
 	
+	//Triple Button Funktion:
 	trip.addActionListener(e -> {
 		tempPunkte += lastValue*2;
+		lastValue = lastValue*3;
+		aktPunkte.setText("geworfene Punkte: " + tempPunkte);
+	});
+	
+	//Rückgängig machen ermöglichen:
+	unDo.addActionListener(e -> {
+		tempPunkte -= lastValue;
 		aktPunkte.setText("geworfene Punkte: " + tempPunkte);
 	});
 	
