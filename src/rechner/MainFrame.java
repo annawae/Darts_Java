@@ -15,7 +15,7 @@ public class MainFrame extends JFrame{
 	JLabel Punkte[];
 	JButton[] btn = new JButton[20];
 	int currentPlayer = 0;
-	
+	int lastValue = 0;
 	
 	
 	MainFrame(Spieler[] spieler){
@@ -108,8 +108,19 @@ public class MainFrame extends JFrame{
 		btn[y].addActionListener(e -> {
 			tempPunkte += index+1;
 			aktPunkte.setText("geworfene Punkte: " + tempPunkte);
+			lastValue = index+1;
 		});
 	}
+	
+	doub.addActionListener(e -> {
+		tempPunkte += lastValue;
+		aktPunkte.setText("geworfene Punkte: " + tempPunkte);
+	});
+	
+	trip.addActionListener(e -> {
+		tempPunkte += lastValue*2;
+		aktPunkte.setText("geworfene Punkte: " + tempPunkte);
+	});
 	
 	//Zug beenden, Punkte übertragen und anzeigen:
 	zugEnde.addActionListener(e -> {
