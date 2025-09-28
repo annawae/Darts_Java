@@ -1,5 +1,6 @@
 package rechner;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -25,11 +26,13 @@ public class MainFrame extends JFrame{
 	this.setVisible(true);
 	this.setLayout(new FlowLayout());
 	
+	
 	//JPanel für die Spieler erstellen und hinzufügen:
 	JPanel spielerAnzeige = new JPanel(); 
+
 	this.add(spielerAnzeige);
 	spielerAnzeige.setLayout(new BoxLayout(spielerAnzeige, BoxLayout.Y_AXIS));
-	
+	spielerAnzeige.setBackground(new Color(123, 142, 100));
 	Punkte = new JLabel[spieler.length];
 	
 	//Anzeige für vorhandene Spieler und deren Punkte anlegen:
@@ -46,7 +49,7 @@ public class MainFrame extends JFrame{
 	JPanel Buttons = new JPanel();
 	this.add(Buttons);
 	Buttons.setLayout(new BoxLayout(Buttons, BoxLayout.Y_AXIS));
-	
+	Buttons.setBackground(new Color(123, 142, 100));
 	
 	btn[0] = new JButton ("1");
 	btn[1] = new JButton ("2");
@@ -72,11 +75,25 @@ public class MainFrame extends JFrame{
 	//Buttons anzeigen lassen:
 	for(int i=0; i<=19; i++) {
 		Buttons.add(btn[i]);
+		btn[i].setBackground(new Color(66, 135, 245));
+		btn[i].setPreferredSize(new Dimension(60, 40));
+		btn[i].setMaximumSize(new Dimension(60, 40));
+		btn[i].setMinimumSize(new Dimension(60, 40));
 	}
+	
+	JPanel doubleTriple = new JPanel();
+	this.add(doubleTriple);
+	JButton doub = new JButton("double");
+	JButton trip = new JButton("triple");
+	
+	doubleTriple.add(doub);
+	doubleTriple.add(trip);
+	
 	
 	//JPanel für die aktuell geworfenen Punkte anlegen:
 	JPanel aktuellePunkte = new JPanel();
 	this.add(aktuellePunkte);
+	aktuellePunkte.setBackground(new Color(123, 142, 100));
 	
 	JLabel aktPunkte = new JLabel("geworfene Punkte: ");
 	aktuellePunkte.add(aktPunkte);

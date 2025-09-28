@@ -1,6 +1,9 @@
 package rechner;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,10 +18,15 @@ public class StartFrame extends JFrame{
 	
 	StartFrame(){
 		
-	
+	this.setBackground(Color.DARK_GRAY);
 	this.setLayout(new FlowLayout());
-	this.setSize(300, 300);
+	this.setSize(240, 500);
 	this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	
+	JLabel spielerFrage = new JLabel ("Wie viele Spieler?");
+	this.add(spielerFrage);
+	spielerFrage.setFont(new Font("Arial", Font.BOLD, 16));
+	spielerFrage.setForeground(Color.DARK_GRAY);
 	
 	JTextField anzahl = new JTextField(10);
 	
@@ -60,8 +68,12 @@ public class StartFrame extends JFrame{
 
 		spieler[y].setName(namen[y].getText());
 	}
-		new MainFrame(spieler);});
+		MainFrame mainFrame = new MainFrame(spieler);
+		mainFrame.getContentPane().setBackground(new Color(123, 142, 100));
+	});
 	
+	Start.setBackground(new Color(145, 6, 31));
+	Start.setPreferredSize(new Dimension(120,40));
 	this.setVisible(true);
 	
 }
